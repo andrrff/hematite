@@ -32,7 +32,7 @@ fn array_16x16x16<T, F>(mut f: F) -> [[[T; SIZE]; SIZE]; SIZE]
 
 impl Region {
     pub fn open(filename: &Path) -> io::Result<Region> {
-        let mmap = try!(Mmap::open_path(filename, Protection::Read));
+        let mmap = (Mmap::open_path(filename, Protection::Read))?;
         Ok(Region{mmap: mmap})
     }
 
